@@ -1,5 +1,7 @@
 '''
 Simple Regex examples
+
+note: https://regex101.com/ is a handy regex tester
 '''
 
 import re
