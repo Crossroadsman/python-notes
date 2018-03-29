@@ -1,5 +1,8 @@
+CSV and JSON
+============
+
 CSV
-===
+---
 See <https://docs.python.org/3/library/csv.html>
 
 
@@ -61,5 +64,36 @@ with open('my_data.csv', 'a') as csv_file:
     })
 ```
 
+JSON
+----
+See <https://docs.python.org/3/library/json.html>
 
 `my_data.json`:
+
+```JSON
+{
+  "name": "Heroine X",
+  "class": "Assassin",
+  "level": 90,
+  "noble_phantasm": "Secret Calibur",
+}
+```
+
+`read_json.py`:
+
+```Python
+import json
+
+with open('my_data.json') as json_file:
+    json_data = json.load(json_file) # load takes a file object, while loads takes the contents of a json file as a string
+    print(json_data['level'])
+```
+
+`write_json.py`:
+
+```Python
+import json
+
+json.dumps([1, 2, 3, 4, 5]) # dumps outputs a string containing the json data, dump outputs a file that is json-encoded
+```
+    
