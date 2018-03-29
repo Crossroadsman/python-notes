@@ -1,3 +1,8 @@
+CSV
+===
+See <https://docs.python.org/3/library/csv.html>
+
+
 `my_data.csv`:
 
 first_name | last_name | position
@@ -40,5 +45,21 @@ with open('my_data.csv', newline-'') as csv_file:
 ```
 
 `write_csv_dict.py`:
+
+```Python
+import csv
+
+with open('my_data.csv', 'a') as csv_file:
+    fieldnames = ['name',
+                  'class']
+    csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    
+    csv_writer.writeheader()
+    csv_writer.writerow({
+        'name': 'Jekyll',
+        'classs': 'Assassin',
+    })
+```
+
 
 `my_data.json`:
