@@ -12,12 +12,16 @@ over your input; it’s someone else’s mistake, but it’s your problem now.
 
 ftfy will do everything it can to fix the problem.
 
+Also, keep in mind Joel Spolsky's great [Unicode character set article][joel-unicode] to avoid causing Unicode problems 
+for others.
+
 
 Installation
 ------------
 ```console
 $ pip3 install ftfy
 ```
+
 
 Usage
 -----
@@ -55,3 +59,4 @@ See the [docs][home] for full usage instructions. Most useful examples are:
 
 
 [home]: https://ftfy.readthedocs.io/en/latest/#
+[joel-unicode]: https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
