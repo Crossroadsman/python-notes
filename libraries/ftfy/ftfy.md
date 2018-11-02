@@ -12,7 +12,7 @@ over your input; it’s someone else’s mistake, but it’s your problem now.
 
 ftfy will do everything it can to fix the problem.
 
-Also, keep in mind Joel Spolsky's great [Unicode character set article][joel-unicode] to avoid causing Unicode problems 
+Also, keep in mind Joel Spolsky's great [Unicode character set blog post][joel-unicode] to avoid causing Unicode problems 
 for others.
 
 
