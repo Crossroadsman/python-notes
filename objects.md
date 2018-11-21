@@ -105,11 +105,57 @@ From [Python Objects][lundh_01]:
 > replacing the name, making it point to an integer object containing the 
 > value 20.
 
+Function Calling
+----------------
 
+From [Call By Object][lundh_02]:
 
+> Python’s model is neither “call by value” nor “call by reference”.
+> The most accurate description is CLU’s “call by object” or “call by sharing”.
+> Or, if you prefer, “call by object reference”.
+
+From [Liskov et al.][liskov_01]:
+> 3.1 Objects and Variables
+> 
+> The basic elements of CLU semantics are *objects* and *variables*. Objects are
+> the data entities that are created and manipulated by CLU programs. Variables
+> are just the names used in a program to refer to objects.
+> 
+> ...
+> 
+> An object may *refer* to objects. For example, a record object refers to the 
+> objects that are the components of the record. This notion is one of logical,
+> not physical, containment. In particular, it is possible for two distinct
+> record objects to refer to (or *share*) the same component object. In the case
+> of a cyclic structure, it is even possible to have recursive data structure
+> definitions and shared data objects without explicit reference types.
+> 
+> ...
+> 
+> An object may exhibit time-varying behaviour. Such an object, called a 
+> *mutable* object, has a state which may be modified by certain operations
+> without changing the identity of the object.
+> 
+> ...
+> 
+> If a mutable object *m* is shared by two other objects *x* and *y*, then a 
+> modification made to *m* made via *x* will be visible when *m* is examined
+> via *y*.
+>
+> Objects that do not exhibit time-varying behaviour are called *immutable*
+> objects, or *constants*. Examples of constants are integers, booleans,
+> characters, and strings. The value of a constant object can not be modified.
+> For example, new strings may be computed from old ones, but existing strings
+> do not change.
+> 
+> ...
+> 
+> 
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 
 
 [chaturvedi_01]: https://web.archive.org/web/20170805220114/http://www.cafepy.com/article/python_types_and_objects/python_types_and_objects.html 'Shalabh Chaturvedi: Python Types and Objects (Internet Archive)'
+[liskov_01]: https://web.archive.org/web/20070613194110/http://www.cs.berkeley.edu/~jcondit/pl-prelim/liskov77clu.pdf 'Liskov et al.: Abstraction Mechanisms in CLU (Internet Archive)'
 [lundh_01]: http://effbot.org/zone/python-objects.htm 'Fredrik Lundh: Python Objects'
+[lundh_02]: http://effbot.org/zone/call-by-object.htm 'Fredrik Lundh: Call By Objects'
