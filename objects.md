@@ -58,10 +58,58 @@ Thus `type` is the type of all types; `object` is the base of all types (except
 itself). These are the two primitive objects in Python.
 
 In Python, 'types' and 'classes' are the same thing (at least since Python 2.2).
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 See also: [Python Types and Objects (archived)][chaturvedi_01]
 
 
+Names
+-----
+
+From [Python Objects][lundh_01]:
+
+> \[N]ames are a bit different — they’re not really properties of the object, 
+> and the object itself doesn’t know what it’s called.
+> 
+> An object can have any number of names, or no name at all.
+> 
+> Names live in *namespaces* (such as a module namespace, an instance namespace,
+> a function’s local namespace).
+> 
+> Namespaces are collections of (name, object reference) pairs (implemented 
+> using dictionaries).
+> 
+> When you call a function or a method, its namespace is initialized with the 
+> arguments you call it with (the names are taken from the function’s argument 
+> list, the objects are those you pass in).
+> 
+> Assignment statements modify namespaces, not objects.
+> 
+> In other words,
+> 
+> ```python
+> name = 10
+> ```
+> 
+> means that you’re adding the name “name” to your local namespace, and making 
+> it refer to an integer object containing the value 10.
+> 
+> If the name is already present, the assignment replaces the original name:
+> 
+> ```python
+> name = 10
+> name = 20
+> ```
+> 
+> means that you’re first adding the name “name” to the local namespace, and 
+> making it refer to an integer object containing the value 10. You’re then 
+> replacing the name, making it point to an integer object containing the 
+> value 20.
+
+
+
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+
 
 [chaturvedi_01]: https://web.archive.org/web/20170805220114/http://www.cafepy.com/article/python_types_and_objects/python_types_and_objects.html 'Shalabh Chaturvedi: Python Types and Objects (Internet Archive)'
+[lundh_01]: http://effbot.org/zone/python-objects.htm 'Fredrik Lundh: Python Objects'
