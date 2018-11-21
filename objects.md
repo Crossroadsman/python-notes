@@ -65,7 +65,7 @@ See also: [Python Types and Objects (archived)][chaturvedi_01]
 Names
 -----
 
-From [Python Objects][lundh_01]:
+From [Lundh: Python Objects][lundh_01]:
 
 > \[N]ames are a bit different — they’re not really properties of the object, 
 > and the object itself doesn’t know what it’s called.
@@ -108,7 +108,7 @@ From [Python Objects][lundh_01]:
 Function Calling
 ----------------
 
-From [Call By Object][lundh_02]:
+From [Lundh: Call By Object][lundh_02]:
 
 > Python’s model is neither “call by value” nor “call by reference”.
 > The most accurate description is CLU’s “call by object” or “call by sharing”.
@@ -164,13 +164,13 @@ From [Liskov et al.: Abstraction Mechanisms in CLU][liskov_01]:
 > 3.2 Assignment and Procedure Invocation
 > The basic actions in CLU are *assignment* and *procedure invocation*. The
 > assignment primitive:
-> ```clu
+> ```pascal
 > x := E
 > ```
 > where `x` is a variable and `E` is an expression, causes `x` to denote the 
 > object resulting from the evaluation of `E`. For example, if `E` is a simple
 > variable `y`, then the assignment:
-> ```clu
+> ```pascal
 > x := y
 > ```
 > causes `x` to denote the object denoted by `y`. The object is *not* copied; 
@@ -199,8 +199,71 @@ From the [CLU Reference Manual][clu_01]:
 > given to the variables of the caller, but merely certain objects.
 
 From [Liskov: A History of CLU][liskov_02]:
-
-
+> CLU looks like an Algol-like language, but its semantics is like that of Lsip:
+> CLU objects reside in an object universe (or heap), and a variable just 
+> identifies (or refers to) an object. We decided early on to have objects in 
+> the heap, although we had numerous discussions about the cost of garbage
+> collection.
+> 
+> ...
+> 
+> A language that allocates objects only on the stack is not sufficiently
+> expressive; the heap is needed for objects whose sizes must change and for
+> objects whose lifetime exceeds that of the procedure that creates them.
+> 
+> ...
+> 
+> Therefore, the choice is: just heap, or both.
+> 
+> Here are the reasons why we chose the heap approach...:
+> 1. Declarations are simple to process when objects are on the heap: the
+>    compiler just allocates space for a pointer. ...
+> 2. The heap approach allows us to separate variable and object creation:
+>    variables are created by declarations, while objects are created explicitly
+>    by calling an operation. ...
+> 3. The heap approach allows variable and object lifetimes to be different;
+>    with the stack approach they must be the same. ...
+> 4. Assignment has a type-independent meaning with the heap approach;
+>    ```pascal
+>    x := e
+>    ```
+>    causes `x` to refer to the object obtained by evaluating expression `e`.
+>    With the stack approach, evaluating an expression produces a value that
+>    must be copied into the assigned variable.
+> 
+> ...
+> 
+> CLU procedures do not share variables at all. In addition to there being no 
+> free variables, there is no call-by-reference. Instead arguments are passed
+> "by object"; the (pointer to the) object resulting from evaluating the actual
+> argument expression is assigned to the formal. (Thus passing a parameter is
+> just doing an assignment to the formal.) Similarly, a pointer to a result 
+> object is returned to the caller.
+> 
+> A CLU procedure can have side effects only if the argument objects can be 
+> modified (since it cannot access the caller's variables **\[ASK: and there are
+> no global variables]**). This led us to the concept of "mutable" objects. Every
+> CLU object has a state. The states of some objects, such as integers and 
+> strings, cannot change; these objects are "immutable". Mutable objects (e.g., 
+> records and arrays) can have a succession of states.
+>
+> ...
+> 
+> CLU assignment causes sharing: after executing `x := y`, variables `x` and `y`
+> both refer to the same object. If this object is immutable, programs cannot 
+> detect the sharing, but they can if the shared object is mutable, since a 
+> modification made via one variable will be visible via the other one. People
+> sometimes argue that sharing of mutable objects makes reasoning about programs
+> more difficult. This has not been our experience in using CLU. I believe this
+> is true in large part because we do not manipulate pointers explicitly.
+> Pointer manipulation is clearly both a nuisance and a source of errors in 
+> other languages.
+> The cost of using the heap is greatly reduced by keeping small immutable
+> objects of built-in types, such as integers and booleans, directly in the
+> variables that refer to them. These objects fit in the variables (they are no
+> bigger than pointers) and storing them there is safe since they are immutable:
+> Even though in this case assignment does a copy of the object, no program can
+> detect it.
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 
