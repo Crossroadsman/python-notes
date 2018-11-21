@@ -61,6 +61,27 @@ In Python, 'types' and 'classes' are the same thing (at least since Python 2.2).
 
 See also: [Python Types and Objects (archived)][chaturvedi_01]
 
+From the [Python docs][python_01] on mutability:
+> Some objects contain references to other objects; these are called 
+> *containers*. Examples of containers are tuples, lists and dictionaries. The
+> references are part of a container's value. In most cases, when we talk about
+> the value of a container, we imply the values, not the identities of the
+> contained objects; however, when we talk about the mutability of a container,
+> only the identities of the immediately contained objects are implied. So, if
+> an immutable container (like a tuple) contains a reference to a mutable 
+> object, its value changes if that mutable object is changed.
+
+From the [Python docs][python_01] on types:
+> Types affect almost all aspects of object behaviour. Even the importance of 
+> object identity is affected in some sense: for immutable types, operations
+> that compute new values may actually return a reference to any existing object
+> with the same type and value, while for mutable objects this is not allowed.
+> E.g., after `a = 1; b = 1`, `a` or `b` may or may not refer to the same object
+> with the value one, depending on the \[Python] implementation, but after
+> `c = []; d = []`, `c` and `d` are guaranteed to refer to two different, 
+> unique, newly created empty lists. (Note that `c = d = []` assigns the same
+> object to both `c` and `d`. **\[ASK: This is equivalent to `d = []; c = d`]**)
+
 Names
 -----
 From [Lundh: Python Objects][lundh_01]:
@@ -103,6 +124,63 @@ From [Lundh: Python Objects][lundh_01]:
 > replacing the name, making it point to an integer object containing the 
 > value 20.
 
+From the [Python Docs][python_03] on names and namespaces:
+> ### A Word About Names and Objects ###
+> Objects have individuality, and multiple names (in multiple scopes) can be
+> bound to the same object. This is known as aliasing in other languages. This
+> is usually not appreciated on a first glance at Python, and can be safely
+> ignored when dealing with immutable basic types (numbers, strings, tuples).
+> However, aliasing has a possibly surprising effect on the semantics of Python
+> code involving mutable objects such as lists, dictionaries, and most other 
+> types. This is usually used to the benefit of the program, sicne aliases
+> behave like pointers in some respects. For example, passing an object is cheap
+> since only a pointer is passed by the implementation; and if a function 
+> modifies an object passed in as an argument, the caller will see the change —
+> this eliminates the need for two different argument passing mechanisms as 
+> in Pascal.
+>
+> ### Python Scopes and Namespaces
+> 
+> ...
+> 
+> A *namespace* is a mapping from names to objects. Most namespaces are 
+> currently implemented as Python dictionaries, but that's not normally 
+> noticeable in any way (except for performance), and it may change in the 
+> future. Examples of namespaces are:
+> - the set of built-in names (containing functions such as `abs()`, and
+>   built-in exception names);
+> - the global names in a module; and
+> - the local names in a function invocation.
+> In a sense the set of attributes of an object also form a namespace.
+> 
+> ...
+> 
+> Namespaces are created at different moments and have different lifetimes. The
+> namespace containing the built-in names is created when the Python interpreter
+> starts up, and is never deleted. The global namespace for a module if created
+> when the module definition is read in; normally, module namespaces also last
+> until the interpreter quits. The statements executed by the top-level 
+> invocation of the interpreter, either read from a script file or 
+> interactively, are considered part of a module called `__main__`, so they have
+> their own global namespace.
+> 
+> ...
+> 
+> Although scores are determined statically, they are used dynamically. At any
+> time during execution, there are at least three nested scopes whose namespaces
+> are directly accessible:
+> - the innermost scope, which is searched first, contains the local names;
+> - the scopes of any enclosing functions, which are searched starting with the
+>   nearest enclosing scope, contains non-local, but also non-global names;
+> - the next-to-last scope contains the current module's global names;
+> - the outermost scope (searched last) is the namespace containing built-in 
+>   names.
+> 
+> ...
+> 
+> A special quirk of Python is that - if no `global` statement is in effect - 
+> assignments to names always go into the innermost scope. Assignments do not
+> copy data — they just bind names to objects.
 
 Call by Sharing (aka Call by Object)
 ------------------------------------
@@ -273,7 +351,6 @@ See also:
 - [Python Docs: FAQ: How do I write a function with output parameters (call 
   by reference)][python_02]
 
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 
 
@@ -285,3 +362,4 @@ See also:
 [lundh_02]: http://effbot.org/zone/call-by-object.htm 'Fredrik Lundh: Call By Objects'
 [python_01]: https://docs.python.org/3/reference/datamodel.html#objects-values-and-types 'Python: Data Model: Objects, values and types'
 [python_02]: https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference 'Python Programming FAQ: How do I write a function with output parameters (call by reference)'
+[python_03]: https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects 'Python: Tutorial: Classes: A Word About names and Objects'
