@@ -164,13 +164,13 @@ From [Liskov et al.: Abstraction Mechanisms in CLU][liskov_01]:
 > 3.2 Assignment and Procedure Invocation
 > The basic actions in CLU are *assignment* and *procedure invocation*. The
 > assignment primitive:
-> ```pascal
+> ```clu
 > x := E
 > ```
 > where `x` is a variable and `E` is an expression, causes `x` to denote the 
 > object resulting from the evaluation of `E`. For example, if `E` is a simple
 > variable `y`, then the assignment:
-> ```pascal
+> ```clu
 > x := y
 > ```
 > causes `x` to denote the object denoted by `y`. The object is *not* copied; 
@@ -224,7 +224,7 @@ From [Liskov: A History of CLU][liskov_02]:
 > 3. The heap approach allows variable and object lifetimes to be different;
 >    with the stack approach they must be the same. ...
 > 4. Assignment has a type-independent meaning with the heap approach;
->    ```pascal
+>    ```clu
 >    x := e
 >    ```
 >    causes `x` to refer to the object obtained by evaluating expression `e`.
