@@ -350,6 +350,7 @@ See also:
 - [Python Docs: Data Model: Objects, values and types][python_01]
 - [Python Docs: FAQ: How do I write a function with output parameters (call 
   by reference)][python_02]
+- [A couple of examples of mutability-related gotchas](https://python-docs.readthedocs.io/en/latest/writing/gotchas.html)
 
 
 
