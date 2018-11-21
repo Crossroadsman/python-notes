@@ -114,7 +114,7 @@ From [Call By Object][lundh_02]:
 > The most accurate description is CLU’s “call by object” or “call by sharing”.
 > Or, if you prefer, “call by object reference”.
 
-From [Liskov et al.][liskov_01]:
+From [Liskov et al.: Abstraction Mechanisms in CLU][liskov_01]:
 > 3.1 Objects and Variables
 > 
 > The basic elements of CLU semantics are *objects* and *variables*. Objects are
@@ -150,12 +150,64 @@ From [Liskov et al.][liskov_01]:
 > 
 > ...
 > 
+> Variables are names used in CLU programs to *denote* particular objects at
+> execution time. Unlike variables in many common programming languages, which
+> *are* objects that *contain* values, CLU variables are simply names that the
+> programmer uses to refer to objects. As such, it is possible for two variables
+> to denote (or *share*) the same object. CLU variables are much like those in
+> Lisp and are similar to pointer variables in other languages. However, CLU
+> variables are *not* objects; they cannot be denoted by other variables or
+> referred to by objects. Thus variables are completely private to the procedure
+> in which they are declared and cannot be accessed or modified by any other 
+> procedure.
 > 
+> 3.2 Assignment and Procedure Invocation
+> The basic actions in CLU are *assignment* and *procedure invocation*. The
+> assignment primitive:
+> ```clu
+> x := E
+> ```
+> where `x` is a variable and `E` is an expression, causes `x` to denote the 
+> object resulting from the evaluation of `E`. For example, if `E` is a simple
+> variable `y`, then the assignment:
+> ```clu
+> x := y
+> ```
+> causes `x` to denote the object denoted by `y`. The object is *not* copied; 
+> after assignment is performed, it will be *shared* by `x` and `y`. Assignment
+> does not affect the state of any object.
+> 
+> ...
+> 
+> Procedure invocation involves passing argument objects from the caller to the
+> called procedure and returning result objects from the procedure to 
+> the caller. The formal arguments of a procedure are considered to be local
+> variables of the procedure and are initialized, by assignment, to the objects
+> resulting from the evaluation of the argument expressions. Thus argument 
+> objects are shared between the caller and the called procedure. A procedure
+> may modify mutable argument objects (e.g., records), but of course it cannot
+> modify immutable ones (e.g., integers). A procedure has no access to the 
+> variables of its caller.
+
+From the [CLU Reference Manual][clu_01]:
+> We call the argument passing techique *call by sharing*, because the argument
+> objects are shared between the caller and the called routine. The technique
+> does not correspond to most traditional argument passing techniques (it is
+> similar to argument passing in LISP). In particular it is not call by value
+> because mutations of arguments performed by the called routine will be
+> visible to the caller. And it is not call by reference because access is not
+> given to the variables of the caller, but merely certain objects.
+
+From [Liskov: A History of CLU][liskov_02]:
+
+
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 
 
 [chaturvedi_01]: https://web.archive.org/web/20170805220114/http://www.cafepy.com/article/python_types_and_objects/python_types_and_objects.html 'Shalabh Chaturvedi: Python Types and Objects (Internet Archive)'
+[clu_01]: https://web.archive.org/web/20161204101433/http://publications.csail.mit.edu/lcs/pubs/pdf/MIT-LCS-TR-225.pdf 'CLU Reference Manual (Internet Archive)'
 [liskov_01]: https://web.archive.org/web/20070613194110/http://www.cs.berkeley.edu/~jcondit/pl-prelim/liskov77clu.pdf 'Liskov et al.: Abstraction Mechanisms in CLU (Internet Archive)'
+[liskov_02]: https://web.archive.org/web/20171026085616/http://publications.csail.mit.edu:80/lcs/pubs/pdf/MIT-LCS-TR-561.pdf 'Liskov: A History of CLU (Internet Archive)'
 [lundh_01]: http://effbot.org/zone/python-objects.htm 'Fredrik Lundh: Python Objects'
 [lundh_02]: http://effbot.org/zone/call-by-object.htm 'Fredrik Lundh: Call By Objects'
