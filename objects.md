@@ -61,10 +61,8 @@ In Python, 'types' and 'classes' are the same thing (at least since Python 2.2).
 
 See also: [Python Types and Objects (archived)][chaturvedi_01]
 
-
 Names
 -----
-
 From [Lundh: Python Objects][lundh_01]:
 
 > \[N]ames are a bit different — they’re not really properties of the object, 
@@ -105,8 +103,11 @@ From [Lundh: Python Objects][lundh_01]:
 > replacing the name, making it point to an integer object containing the 
 > value 20.
 
-Function Calling
-----------------
+
+Call by Sharing (aka Call by Object)
+------------------------------------
+Python uses the call by sharing evaluation strategy pioneered in CLU, and
+extensively described by Barbara Liskov (the project head).
 
 From [Lundh: Call By Object][lundh_02]:
 
@@ -264,6 +265,14 @@ From [Liskov: A History of CLU][liskov_02]:
 > bigger than pointers) and storing them there is safe since they are immutable:
 > Even though in this case assignment does a copy of the object, no program can
 > detect it.
+
+See also:
+- [Stack Overflow: succinct answer](https://stackoverflow.com/a/8140747)
+- [Stack Overflow: longer answer](https://stackoverflow.com/a/986145)
+- [Python Docs: Data Model: Objects, values and types][python_01]
+- [Python Docs: FAQ: How do I write a function with output parameters (call 
+  by reference)][python_02]
+
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 
@@ -274,3 +283,5 @@ From [Liskov: A History of CLU][liskov_02]:
 [liskov_02]: https://web.archive.org/web/20171026085616/http://publications.csail.mit.edu:80/lcs/pubs/pdf/MIT-LCS-TR-561.pdf 'Liskov: A History of CLU (Internet Archive)'
 [lundh_01]: http://effbot.org/zone/python-objects.htm 'Fredrik Lundh: Python Objects'
 [lundh_02]: http://effbot.org/zone/call-by-object.htm 'Fredrik Lundh: Call By Objects'
+[python_01]: https://docs.python.org/3/reference/datamodel.html#objects-values-and-types 'Python: Data Model: Objects, values and types'
+[python_02]: https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference 'Python Programming FAQ: How do I write a function with output parameters (call by reference)'
