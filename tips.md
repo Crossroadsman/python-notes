@@ -110,6 +110,11 @@ class Circle():
         automatically associates the method with the current class's
         copy ('class-local reference': ensure that `self` just refers to 
         self rather than self + children).
+        
+        For more explanation, see:
+        https://docs.python.org/3/tutorial/classes.html#private-variables
+        
+        and specifically, Python's use of 'name mangling'.
         """
         p = self.__perimeter()
         r = p / math.pi / 2.0
