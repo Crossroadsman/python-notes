@@ -1,8 +1,15 @@
+Tips
+====
+
 Always start with a module-level docstring to describe the 'elevator pitch' for what the module is supposed to do.
 
 Then, before writing any code, add a class-level docstring.
 
 Hettinger: ["Init isn't a constructor. It's[sic] job is to initialize the instance variables"](https://youtu.be/HTLu2DFOdTg?t=447)
+
+
+Features of Python Classes
+--------------------------
 
 Example class:
 
