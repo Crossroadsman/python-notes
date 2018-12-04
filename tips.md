@@ -136,5 +136,13 @@ class Tire(Circle):
         'overriding'.
         """
         return Circle.perimeter(self) * 1.25
+
+    # note, the following doesn't break `area()` because of name mangling
+    # (internally, python redefines a `__variable` as 
+    # `_<CurrentClass>__variable` which means that Circle's `__perimeter`
+    # becomes `_Circle__perimeter` and the following line gets redefined
+    # to `_Tire__perimeter`
+    __perimeter = perimeter
 ```
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+
