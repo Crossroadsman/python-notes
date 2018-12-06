@@ -100,6 +100,7 @@ This is one long, ugly test (even with all the comments removed):
 
         mock_list.get_absolute_url.return_value = 'fake_url'
         def check_owner_assigned():
+            self.assertEqual(mock_list.owner, user)
         mock_list.save.side_effect = check_owner_assigned
 
         user = User.objects.create(email='a@b.com')
