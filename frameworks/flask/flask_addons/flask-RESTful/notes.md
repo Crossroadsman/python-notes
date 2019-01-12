@@ -7,3 +7,7 @@ Installation
 ```console
 (venv) $ pip3 install flask-restful peewee
 ```
+
+Usage
+-----
+See [Treehouse/.../flask-restful](https://github.com/Crossroadsman/Treehouse/tree/master/Tracks/Flask/flask-restful) for a demo project.
