@@ -4,8 +4,8 @@ Flask
 Request Objects
 ---------------
 ### The Request Object ###
-Type: `flask.wrappers.Request` (presents as `werkzeug.local.LocalProxy`).
-Docs: <http://flask.pocoo.org/docs/1.0/api/#flask.Request>
+-Type: `flask.wrappers.Request` (presents as `werkzeug.local.LocalProxy`).
+-Docs: <http://flask.pocoo.org/docs/1.0/api/#flask.Request>
 
 ### Accessing a Request object ###
 Flask keeps a reference to the request context. This is available to anything 
