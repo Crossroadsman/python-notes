@@ -20,6 +20,7 @@ print(request)
 
 ### Interesting Attributes on a Request Object ###
 
+- `args` (?): The query string as key value pairs;
 - `base_url` (`str`): The URL. E.g., `'https://www.myhost.com/api/v1/todos'`;
 - `content_encoding` (? | `None`): Specified content encoding, if any. Otherwise None;
 - `content_type` (? | `None`): Specified content type, if any. Otherwise None;
