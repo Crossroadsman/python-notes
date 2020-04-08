@@ -20,7 +20,7 @@ Consider the following:
 ...         return n
 ...     return inner()
 ...
->>> counter = outer()
+>>> counter = outer
 >>> counter()  # We might be expecting 1
 Traceback (most recent call last):
 ...
