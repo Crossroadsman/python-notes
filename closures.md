@@ -18,7 +18,7 @@ Consider the following:
 ...     def inner():
 ...         n += 1
 ...         return n
-...     return inner
+...     return inner()
 ...
 >>> counter = outer()
 >>> counter()  # We might be expecting 1
